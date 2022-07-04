@@ -58,6 +58,7 @@ app.post('api/notes', (req, res) => {
 function deleteNote(id, notesArray){
     for(let i = 0; i < notesArray.length; i++) {
         let note = notesArray[i];
+
         if(note.id == id) {
             notesArray.splice(i, 1);
             fs.writeFileSync(
@@ -70,7 +71,7 @@ function deleteNote(id, notesArray){
 }
 // delete saved notes
 app.delete('/api/notes/:id',(req, res) => {
-    delteNote(req.parms.id, allNotes);
+    deleteNote(req.parms.id, allNotes);
     res.json(true);
 });
 // start server to begin listing
